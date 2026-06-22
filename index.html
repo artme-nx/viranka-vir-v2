@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Viranka — Vir | Večeri uz more, riba i žar na otoku Viru</title>
+<meta name="description" content="Restaurant Viranka, otok Vir — dalmatinska riba, žar i otočka jela uz mirno more u suton. Topla večera pod borovima. Rezervirajte stol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#0E1F1C;
+  --pine-deep:#091513;
+  --pine-soft:#16302B;
+  --gold:#C9A24B;
+  --gold-soft:#D9BC78;
+  --cream:#EFE7D6;
+  --cream-mid:#B7B2A4;
+  --line:rgba(201,162,75,.22);
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--pine);
+  color:var(--cream);
+  font-size:17px;
+  line-height:1.75;
+  font-weight:300;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.lock{overflow:hidden}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+.eyebrow{font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;width:100%;z-index:90;padding:24px 0;transition:background .5s,padding .5s,border-color .5s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(9,21,19,.82);backdrop-filter:blur(14px);padding:14px 0;border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--font-display);font-size:30px;font-weight:500;letter-spacing:.02em;color:var(--cream)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:38px;align-items:center}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-mid);transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.btn-res{font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:13px 26px;border-radius:0;background:transparent;cursor:pointer;transition:.4s;white-space:nowrap}
+.btn-res:hover{background:var(--gold);color:var(--pine-deep)}
+.burger{display:none;flex-direction:column;gap:6px;cursor:pointer;background:none;border:none;padding:6px}
+.burger span{width:26px;height:1px;background:var(--cream);transition:.3s}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:660px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;transform:scale(1.12);will-change:transform}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,21,19,.55) 0%,rgba(9,21,19,.25) 40%,rgba(9,21,19,.92) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding-bottom:9vh}
+.hero .eyebrow{display:block;margin-bottom:24px;opacity:0}
+.hero h1{font-size:clamp(50px,9vw,128px);font-weight:400;letter-spacing:.01em;color:var(--cream)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero .word>span{display:inline-block;transform:translateY(110%)}
+.hero p.sub{margin-top:26px;max-width:520px;font-size:clamp(16px,1.7vw,19px);color:var(--cream-mid);opacity:0}
+.hero .btn-res{margin-top:34px;opacity:0;font-size:12px;padding:15px 32px}
+.scroll-ind{position:absolute;bottom:30px;right:42px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--cream-mid)}
+.scroll-ind span{font-size:10px;letter-spacing:.28em;text-transform:uppercase;writing-mode:vertical-rl}
+.scroll-ind .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:fall 2s infinite}
+@keyframes fall{0%{transform:translateY(0);opacity:0}40%{opacity:1}100%{transform:translateY(16px);opacity:0}}
+
+section{position:relative}
+.pad{padding:130px 0}
+.reveal{opacity:0;transform:translateY(30px)}
+
+/* MANIFEST */
+.manifest{text-align:center;background:var(--pine)}
+.manifest .inner{max-width:760px;margin:0 auto}
+.manifest h2{font-size:clamp(32px,4.8vw,58px);margin-top:22px;line-height:1.16}
+.manifest h2 em{font-style:italic;color:var(--gold)}
+.manifest p{margin-top:30px;font-size:19px;color:var(--cream-mid)}
+.divider{width:46px;height:1px;background:var(--gold);margin:0 auto}
+
+/* MENU */
+.menu{background:var(--pine-deep)}
+.menu-head{text-align:center;max-width:600px;margin:0 auto 70px}
+.menu-head h2{font-size:clamp(36px,5.4vw,66px);margin-top:16px}
+.menu-head p{margin-top:18px;color:var(--cream-mid)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px 80px}
+.menu-col h3{font-size:28px;color:var(--gold);margin-bottom:8px}
+.menu-col .col-sub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-mid);margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.menu-item{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.menu-item:last-child{border-bottom:none}
+.menu-item .name{font-family:var(--font-display);font-size:23px;font-weight:500;color:var(--cream)}
+.menu-item .desc{font-size:14px;color:var(--cream-mid);margin-top:5px;line-height:1.6}
+
+/* STORY */
+.story{background:var(--pine)}
+.story-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.story-img{position:relative;height:600px;overflow:hidden}
+.story-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.92)}
+.story-text h2{font-size:clamp(34px,5vw,60px);margin:20px 0 26px}
+.story-text h2 em{font-style:italic;color:var(--gold)}
+.story-text p{color:var(--cream-mid);margin-bottom:20px}
+.story-text p:last-child{margin-bottom:0}
+
+/* GALLERY */
+.gallery{background:var(--pine-deep)}
+.gallery-head{text-align:center;max-width:600px;margin:0 auto 56px}
+.gallery-head h2{font-size:clamp(34px,5vw,60px);margin-top:16px}
+.gallery-head p{margin-top:16px;color:var(--cream-mid)}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:18px}
+.gallery-grid figure{overflow:hidden;position:relative}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.9);transition:transform 1s ease,filter .6s ease}
+.gallery-grid figure:hover img{transform:scale(1.06);filter:saturate(1) brightness(1)}
+.g1{grid-column:span 5;grid-row:span 2}
+.g2{grid-column:span 4;grid-row:span 1}
+.g3{grid-column:span 3;grid-row:span 2}
+.g4{grid-column:span 4;grid-row:span 1}
+.g5{grid-column:span 4;grid-row:span 2}
+.g6{grid-column:span 5;grid-row:span 1}
+.g7{grid-column:span 3;grid-row:span 1}
+
+/* LOCATION */
+.location{background:var(--pine)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:stretch}
+.loc-info h2{font-size:clamp(34px,5vw,58px);margin:16px 0 30px}
+.loc-row{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.loc-row:first-of-type{border-top:1px solid var(--line)}
+.loc-row .k{flex:0 0 130px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-top:4px}
+.loc-row .v{color:var(--cream-mid)}
+.loc-row .v a{color:var(--cream)}
+.hours li{list-style:none;display:flex;justify-content:space-between;padding:7px 0;color:var(--cream-mid);font-size:15px}
+.loc-map{overflow:hidden;min-height:460px;border:1px solid var(--line)}
+.loc-map iframe{width:100%;height:100%;min-height:460px;border:0;display:block;filter:grayscale(.3) brightness(.92)}
+
+/* CTA */
+.cta{text-align:center;background:var(--pine-soft);padding:120px 0}
+.cta h2{font-size:clamp(36px,5.5vw,68px)}
+.cta h2 em{font-style:italic;color:var(--gold)}
+.cta p{margin:20px auto 34px;max-width:480px;color:var(--cream-mid)}
+.cta .btn-res{background:var(--gold);color:var(--pine-deep);border-color:var(--gold);font-size:12px;padding:16px 38px}
+.cta .btn-res:hover{background:transparent;color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--pine-deep);padding:84px 0 38px;border-top:1px solid var(--line)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;margin-bottom:56px}
+.foot-logo{font-family:var(--font-display);font-size:34px;color:var(--cream);margin-bottom:18px}
+.foot-logo span{color:var(--gold)}
+.foot-col p{font-size:15px;color:var(--cream-mid)}
+.foot-col h4{font-family:var(--font-body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500}
+.foot-col a{display:block;color:var(--cream-mid);font-size:15px;padding:5px 0;transition:color .3s}
+.foot-col a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--cream-mid)}
+
+/* RESERVATION SLIDE-IN PANEL */
+.panel-overlay{position:fixed;inset:0;background:rgba(9,21,19,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .4s;z-index:200}
+.panel-overlay.open{opacity:1;pointer-events:all}
+.res-panel{position:fixed;top:0;right:0;width:min(460px,100vw);height:100%;background:var(--pine);border-left:1px solid var(--line);transform:translateX(100%);z-index:210;padding:54px 44px;overflow-y:auto}
+.res-panel h3{font-size:38px;margin-bottom:8px}
+.res-panel .sub{color:var(--cream-mid);font-size:15px;margin-bottom:34px}
+.res-panel label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:18px 0 8px}
+.res-panel input,.res-panel select,.res-panel textarea{width:100%;background:var(--pine-deep);border:1px solid var(--line);color:var(--cream);padding:13px 14px;font-family:var(--font-body);font-size:15px;border-radius:0}
+.res-panel input:focus,.res-panel select:focus,.res-panel textarea:focus{outline:none;border-color:var(--gold)}
+.res-panel button.submit{width:100%;margin-top:28px;background:var(--gold);color:var(--pine-deep);border:none;padding:16px;font-family:var(--font-body);font-size:12px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.3s}
+.res-panel button.submit:hover{background:var(--gold-soft)}
+.res-panel .close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--cream);font-size:30px;cursor:pointer;line-height:1}
+.res-panel .call{margin-top:24px;text-align:center;font-size:14px;color:var(--cream-mid)}
+.res-panel .call a{color:var(--gold)}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .story-grid,.loc-grid,.menu-grid,.foot-grid{grid-template-columns:1fr;gap:44px}
+  .story-img{height:420px}
+  .pad{padding:90px 0}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .g1,.g2,.g3,.g4,.g5,.g6,.g7{grid-column:span 1;grid-row:span 1}
+  .g1{grid-column:span 2}
+}
+@media(max-width:560px){
+  .wrap{padding:0 22px}
+  .scroll-ind{display:none}
+  .foot-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  .hero-bg{transform:scale(1)!important}
+  .hero .word>span{transform:none!important}
+  .hero .eyebrow,.hero p.sub,.hero .btn-res{opacity:1!important}
+  .scroll-ind .dot{animation:none}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo">Vir<span>anka</span></a>
+    <nav class="nav-links">
+      <a href="#manifest">Doživljaj</a>
+      <a href="#menu">Jelovnik</a>
+      <a href="#story">Priča</a>
+      <a href="#gallery">Galerija</a>
+      <a href="#location">Lokacija</a>
+    </nav>
+    <button class="btn-res" data-open-res>Rezerviraj stol</button>
+    <button class="burger" id="burger" aria-label="Izbornik"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-inner wrap">
+    <span class="eyebrow" id="heroEyebrow">Otok Vir &middot; Večeri uz more</span>
+    <h1 id="heroTitle"></h1>
+    <p class="sub" id="heroSub">Kad sunce zađe iza borova, more utihne, a žar zamiriše. Dalmatinska večera onako kako otok pamti.</p>
+    <button class="btn-res" data-open-res id="heroBtn">Rezerviraj stol</button>
+  </div>
+  <div class="scroll-ind"><span>Niže</span><div class="dot"></div></div>
+</section>
+
+<section class="manifest pad" id="manifest">
+  <div class="wrap inner">
+    <div class="divider reveal"></div>
+    <h2 class="reveal">Ime nosimo po otoku. <em>More nosimo na stol.</em></h2>
+    <p class="reveal">Viranka znači pripadati Viru — njegovim plitkim lagunama, borovima i mirisu soli. U suton palimo žar i pripremamo ono što su nam more i otok dali tog dana: ribu lokalnih ribara, maslinovo ulje s otoka, vino s obližnjih brda. Bez žurbe. Uz dobro društvo i pogled na tamno, mirno more.</p>
+  </div>
+</section>
+
+<section class="menu pad" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <span class="eyebrow reveal">Jelovnik</span>
+      <h2 class="reveal">Riba, žar i otok</h2>
+      <p class="reveal">Mijenja se s ulovom i godišnjim dobom. Sve s mora i s otoka, pripremljeno jednostavno i s poštovanjem.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-col reveal">
+        <h3>Iz mora</h3>
+        <div class="col-sub">Svježi ulov &amp; morski plodovi</div>
+        <div class="menu-item"><div class="name">Riba na gradele</div><div class="desc">Dnevni ulov pečen na žaru, blitva s krumpirom i otočko maslinovo ulje.</div></div>
+        <div class="menu-item"><div class="name">Brudet s palentom</div><div class="desc">Spori dalmatinski gulaš od miješane ribe, kuhan kako se kuhao oduvijek.</div></div>
+        <div class="menu-item"><div class="name">Crni rižoto od sipe</div><div class="desc">Domaća riža bojena tintom, bogata mirisom mora i bijelog vina.</div></div>
+        <div class="menu-item"><div class="name">Buzara od školjki</div><div class="desc">Dagnje i kvrkavci u umaku od češnjaka, vina i mrvica kruha.</div></div>
+        <div class="menu-item"><div class="name">Plata morskih plodova</div><div class="desc">Za dvoje — riba, lignje, škampi i školjke sa žara, uz limun.</div></div>
+      </div>
+      <div class="menu-col reveal">
+        <h3>Sa žara &amp; otoka</h3>
+        <div class="col-sub">Meso, vrt i slatki kraj</div>
+        <div class="menu-item"><div class="name">Janjetina s ražnja</div><div class="desc">Otočka janjetina pečena polako, s mladim krumpirom i ružmarinom.</div></div>
+        <div class="menu-item"><div class="name">Pašticada s njokima</div><div class="desc">Govedina sušena u vinu i začinima, mekana kao nedjeljni ručak.</div></div>
+        <div class="menu-item"><div class="name">Miješano meso s gradela</div><div class="desc">Vratina, kobasica i ćevapi uz domaći ajvar i pečene paprike.</div></div>
+        <div class="menu-item"><div class="name">Otočka salata</div><div class="desc">Rajčica, rikula, kapari i ovčji sir, prelivena maslinovim uljem.</div></div>
+        <div class="menu-item"><div class="name">Rožata &amp; smokve</div><div class="desc">Karamelizirana rožata ili domaće smokve u medu i orasima.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story pad" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img reveal"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=1100&q=80" alt="Topla večera uz svijeću u restoranu Viranka"></div>
+    <div class="story-text">
+      <span class="eyebrow reveal">Naša priča</span>
+      <h2 class="reveal">Suton, žar i <em>tišina mora</em></h2>
+      <p class="reveal">Vir je otok plitkih uvala i borovih obala, mjesto gdje se ljeto živi sporo. Viranka je nastala iz želje da taj osjećaj prenesemo na stol — toplu, iskrenu večeru uz more koje se smiri kad padne mrak.</p>
+      <p class="reveal">Ribu biramo na obali, povrće iz susjedstva, a recepte čuvamo onakvima kakvi su došli od ribara i bakā. Kod nas se ne žuri: dođete na jedno jelo, ostanete na cijelu večer.</p>
+      <p class="reveal">Upalimo svijeće, natočimo vino i pustimo da otok ispriča ostatak.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery pad" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <span class="eyebrow reveal">Galerija</span>
+      <h2 class="reveal">Večeri na Viru</h2>
+      <p class="reveal">More u sutonu, žar pod borovima i topla svjetla naše terase.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure class="g1"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt="Topli interijer restorana u suton"></figure>
+      <figure class="g2"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Riba na žaru"></figure>
+      <figure class="g3"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="More otoka Vir u suton"></figure>
+      <figure class="g4"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Tanjur svježe ribe"></figure>
+      <figure class="g5"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Roštilj i morski plodovi"></figure>
+      <figure class="g6"><img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1000&q=80" alt="Borovi i obala otoka Vir"></figure>
+      <figure class="g7"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Čaša vina uz večeru"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="location pad" id="location">
+  <div class="wrap loc-grid">
+    <div class="loc-info">
+      <span class="eyebrow reveal">Lokacija &amp; rezervacije</span>
+      <h2 class="reveal">Nađite nas na Viru</h2>
+      <div class="reveal">
+        <div class="loc-row"><div class="k">Adresa</div><div class="v">Restaurant Viranka<br>Vir, otok Vir, Hrvatska</div></div>
+        <div class="loc-row"><div class="k">Rezervacije</div><div class="v"><a href="tel:+38523362039">+385 23 362 039</a><br>Preporučujemo rezervaciju za večeru u sezoni.</div></div>
+        <div class="loc-row"><div class="k">Radno vrijeme</div><div class="v">
+          <ul class="hours">
+            <li><span>Ponedjeljak — Petak</span><span>16:00 — 23:00</span></li>
+            <li><span>Subota — Nedjelja</span><span>12:00 — 24:00</span></li>
+            <li><span>Zima</span><span>Po dogovoru</span></li>
+          </ul>
+        </div></div>
+      </div>
+      <button class="btn-res reveal" data-open-res style="margin-top:32px;font-size:12px;padding:16px 32px">Rezerviraj stol</button>
+    </div>
+    <div class="loc-map reveal">
+      <iframe src="https://maps.google.com/maps?q=Restaurant+Viranka+Vir&output=embed" loading="lazy" title="Karta — Restaurant Viranka, Vir" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="reveal">Večer pod <em>borovima</em></h2>
+    <p class="reveal">Rezervirajte stol uz more i prepustite se mirnoj, toploj večeri na Viru.</p>
+    <button class="btn-res reveal" data-open-res>Rezerviraj stol</button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-logo">Vir<span>anka</span></div>
+        <p>Restoran ribe i žara na otoku Viru. Tople večeri uz mirno more, ime po otoku kojem pripadamo.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Posjetite</h4>
+        <a href="#menu">Jelovnik</a>
+        <a href="#story">Naša priča</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#location">Lokacija</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+38523362039">+385 23 362 039</a>
+        <a href="#location">Vir, otok Vir, Hrvatska</a>
+        <a href="#location">Radno vrijeme</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Restaurant Viranka — Vir. Sva prava pridržana.</span>
+      <span>Otok Vir &middot; Jadran</span>
+    </div>
+  </div>
+</footer>
+
+<!-- RESERVATION PANEL -->
+<div class="panel-overlay" id="overlay"></div>
+<aside class="res-panel" id="resPanel" aria-hidden="true">
+  <button class="close" id="closeRes" aria-label="Zatvori">&times;</button>
+  <h3>Rezervacija</h3>
+  <p class="sub">Ostavite svoje podatke ili nas jednostavno nazovite — javit ćemo vam se i potvrditi stol.</p>
+  <form id="resForm">
+    <label for="rname">Ime i prezime</label>
+    <input id="rname" type="text" placeholder="Vaše ime" required>
+    <label for="rdate">Datum</label>
+    <input id="rdate" type="date" required>
+    <label for="rtime">Vrijeme</label>
+    <input id="rtime" type="time" value="20:00" required>
+    <label for="rguests">Broj gostiju</label>
+    <select id="rguests">
+      <option>2 osobe</option><option>3 osobe</option><option>4 osobe</option>
+      <option>5 osoba</option><option>6 osoba</option><option>7+ osoba</option>
+    </select>
+    <label for="rnote">Napomena</label>
+    <textarea id="rnote" rows="3" placeholder="Stol uz more, posebne prilike..."></textarea>
+    <button type="submit" class="submit">Pošalji upit</button>
+  </form>
+  <p class="call">Ili nazovite: <a href="tel:+38523362039">+385 23 362 039</a></p>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Build hero word-reveal markup
+(function(){
+  const title=document.getElementById('heroTitle');
+  const parts=[{t:'Otok',em:false},{t:'na',em:false},{t:'tanjuru,',em:false,br:true},{t:'more',em:true},{t:'u',em:true},{t:'sutonu',em:true}];
+  title.innerHTML=parts.map(p=>{
+    const cls=p.em?'word"><span style="font-style:italic;color:var(--gold)':'word"><span';
+    return `<span class="${cls}">${p.t}</span></span>${p.br?'<br>':' '}`;
+  }).join('');
+})();
+
+// Header scroll
+const header=document.getElementById('header');
+const onScrollHeader=()=>header.classList.toggle('scrolled',window.scrollY>60);
+onScrollHeader();
+window.addEventListener('scroll',onScrollHeader,{passive:true});
+
+// Reservation panel
+const overlay=document.getElementById('overlay');
+const panel=document.getElementById('resPanel');
+function openRes(){
+  overlay.classList.add('open');panel.setAttribute('aria-hidden','false');document.body.classList.add('lock');
+  if(reduce){panel.style.transform='translateX(0)';}
+  else{gsap.to(panel,{x:0,duration:.5,ease:'power3.inOut'});}
+}
+function closeRes(){
+  overlay.classList.remove('open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('lock');
+  if(reduce){panel.style.transform='translateX(100%)';}
+  else{gsap.to(panel,{x:'100%',duration:.45,ease:'power3.in'});}
+}
+document.querySelectorAll('[data-open-res]').forEach(b=>b.addEventListener('click',openRes));
+document.getElementById('closeRes').addEventListener('click',closeRes);
+overlay.addEventListener('click',closeRes);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeRes();});
+document.getElementById('resForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  panel.querySelector('form').style.display='none';
+  panel.querySelector('.sub').textContent='Hvala! Vaš upit je zabilježen — javit ćemo vam se uskoro za potvrdu. Za hitne rezervacije slobodno nazovite.';
+});
+
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('menu').scrollIntoView({behavior:reduce?'auto':'smooth'});
+});
+
+if(!reduce){
+  const lenis=new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll',ScrollTrigger.update);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){const t=document.querySelector(id);if(t){e.preventDefault();lenis.scrollTo(t,{offset:-70});}}
+    });
+  });
+
+  // Hero breathing zoom-on-load + word reveal
+  const tl=gsap.timeline({delay:.2});
+  tl.to('#heroBg',{scale:1,duration:2.4,ease:'power2.out'},0)
+    .to('#heroEyebrow',{opacity:1,y:0,duration:.8,ease:'power2.out'},.4)
+    .to('#heroTitle .word>span',{y:0,duration:.95,stagger:.09,ease:'power3.out'},.55)
+    .to('#heroSub',{opacity:1,duration:.9,ease:'power2.out'},1.0)
+    .to('#heroBtn',{opacity:1,duration:.8,ease:'power2.out'},1.2);
+
+  // Reveals
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('#heroTitle .word>span').forEach(s=>s.style.transform='none');
+}
+</script>
+</body>
+</html>
